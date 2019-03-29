@@ -20,18 +20,18 @@ function main() {
         barsx[i] -= 2;
         if (barsx[i] + 52 <= -294) {
             barsx[i] = cnv.width;
+            topbarsy[i] = Math.randomInt(-450, -150);
+            bottombarsy[i] = topbarsy[i] + 700;
         }
         ctx.drawImage(pipeOnBottom, barsx[i], bottombarsy[i], 52, 500);
         if (relativeY <= topbarsy[i] + 500 || relativeY >= bottombarsy[i]) {
             if (relativeX >= barsx[i] && relativeX <= barsx[i] + 52) {
-                // console.log("touched");
-                alert("touched");
+                dead();
             }
         }
         if (topRelativeY <= topbarsy[i] + 500 || bottomRelativeY >= bottombarsy[i]) {
             if (topRelativex >= barsx[i] && topRelativex <= barsx[i] + 52) {
-                // console.log("touched");
-                alert("touched");
+                dead();
             }
         }
     }
@@ -63,4 +63,9 @@ function changetheframe() {
             whichdrawing = spriteOne;
         }
     }, 200);
+}
+
+function dead() {
+    alert("dead");
+    document.location.reload();
 }
