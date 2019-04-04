@@ -66,6 +66,6 @@ function changetheframe() {
 }
 
 function dead() {
-    alert("dead");
+    alert("You died!");
     document.location.reload();
 }
