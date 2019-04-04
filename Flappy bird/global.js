@@ -30,3 +30,5 @@ let relativeX = player.x + 90;
 let topRelativex = player.x + 45;
 let topRelativeY = 0;
 let bottomRelativeY = 0;
+let newscore = 0;
+let highscore = 0;

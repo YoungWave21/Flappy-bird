@@ -18,8 +18,8 @@ function main() {
     for (let i = 0; i < barsx.length; i++) {
         ctx.drawImage(pipeOnTop, barsx[i], topbarsy[i], 52, 500);
         barsx[i] -= 2;
-        if (barsx[i] + 52 <= -294) {
-            barsx[i] = cnv.width;
+        if (barsx[i] + 52 <= -1) {
+            barsx[i] = cnv.width + 293;
             topbarsy[i] = Math.randomInt(-450, -150);
             bottombarsy[i] = topbarsy[i] + 700;
         }
@@ -34,11 +34,22 @@ function main() {
                 dead();
             }
         }
+        if (barsx[i] == player.x) {
+            newscore++;
+        }
     }
 
     if (KeyIsPressed["ArrowUp"] || KeyIsPressed["Space"]) {
         player.ys = -5;
     }
+    ctx.fillStyle = "white";
+    ctx.font = "bold 60px Arial";
+    ctx.fillText(newscore, cnv.width / 2, 100);
+    if (newscore > highscore) {
+        highscore = newscore;
+    }
+    ctx.font = "bold 30px Arial";
+    ctx.fillText("Highscore:" + highscore, cnv.width / 2 - 80, 150);
 
     //loop
     requestAnimationFrame(main);
@@ -66,6 +77,6 @@ function changetheframe() {
 }
 
 function dead() {
-    alert("You died!");
+    alert("dead");
     document.location.reload();
 }
